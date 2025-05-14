@@ -16,7 +16,7 @@ phases:
         commands:
           - echo Preparing all repository files for artifact...
           - mkdir -p build  # Create output directory
-          - cp -r ./* build/  # Copy all files and directories to build directory
+          - find . -maxdepth 1 -not -path './build' -not -path . -exec cp -r {} build/ \;  # Copy all files except build directory
 
     post_build:
         commands:
