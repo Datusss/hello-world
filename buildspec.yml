@@ -5,20 +5,31 @@ phases:
         runtime-versions:
             nodejs: latest
         commands:
-            - echo "installing something"
+          - echo Installing dependencies...
+          - npm install -g npm@latest  # Update npm to the latest version
+          - npm install  # Install project dependencies (use 'yarn install' if using Yarn)
+
     pre_build:
-        commands: 
-            - echo "we are in the pre build phase"
-            - ls -l
+        commands:
+          - echo Running tests...
+          - npm test  # Run tests (modify if using a different test command, e.g., 'npm run test')
+    
     build:
         commands:
-            - echo "we are in the build block"
-            - echo "we will run some tests"
-            - grep -Fq "Congratulations" index.html
+          - echo Building the application...
+          - npm run build  # Build the app (modify if using a different build command, e.g., 'yarn build')
+    
     post_build:
         commands:
-            - echo "we are in the post build phase"
+          - echo Build completed on `date`
+          - echo Preparing artifacts...
+
 artifacts:
   files:
     - '**/*'  # Include all files in the build directory (modify if specific files are needed, e.g., 'dist/**/*')
+  base-directory: 'build'  # Specify output directory (modify if your build outputs to a different folder, e.g., 'dist')
   discard-paths: no
+
+cache:
+  paths:
+    - 'node_modules/**/*'  # Cache node_modules to speed up future builds
