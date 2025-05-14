@@ -11,14 +11,14 @@ phases:
         commands:
           - echo Listing all files in repository...
           - ls -l
-    
-      build:
+          
+    build:
         commands:
           - echo Preparing all repository files for artifact...
           - mkdir -p build  # Create output directory
           - cp -r ./* build/  # Copy all files and directories to build directory
-    
-      post_build:
+
+    post_build:
         commands:
           - echo Artifact preparation completed on `date`
 
