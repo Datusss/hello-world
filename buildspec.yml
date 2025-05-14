@@ -9,6 +9,7 @@ phases:
     pre_build:
         commands: 
             - echo "we are in the pre build phase"
+            - ls -l
     build:
         commands:
             - echo "we are in the build block"
