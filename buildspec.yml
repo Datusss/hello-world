@@ -17,3 +17,7 @@ phases:
     post_build:
         commands:
             - echo "we are in the post build phase"
+artifacts:
+  files:
+    - '**/*'  # Include all files in the build directory (modify if specific files are needed, e.g., 'dist/**/*')
+  discard-paths: no
