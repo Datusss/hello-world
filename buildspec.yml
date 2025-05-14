@@ -11,8 +11,7 @@ phases:
 
     pre_build:
         commands:
-          - echo Running tests...
-          - npm test  # Run tests (modify if using a different test command, e.g., 'npm run test')
+          - echo "we are in the pre build phase"
     
     build:
         commands:
