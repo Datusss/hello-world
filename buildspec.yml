@@ -9,20 +9,21 @@ phases:
 
     pre_build:
         commands:
-          - echo "we are in the pre build phase"
-    
-    build:
-        commands:
-          - echo Building the application...
+          - echo Listing all files in repository...
           - ls -l
     
-    post_build:
+      build:
         commands:
-          - echo Build completed on `date`
-          - echo Preparing artifacts...
+          - echo Preparing all repository files for artifact...
+          - mkdir -p build  # Create output directory
+          - cp -r ./* build/  # Copy all files and directories to build directory
+    
+      post_build:
+        commands:
+          - echo Artifact preparation completed on `date`
 
 artifacts:
   files:
-    - '*'
+    - '**/*'  # Include all files and directories
+  base-directory: 'build'  # Output directory for artifacts
   discard-paths: no
-
