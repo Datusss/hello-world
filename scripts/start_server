@@ -1,4 +1,3 @@
 #!/bin/bash
-#service httpd start
-cd deployment-archive
-npm start
+service httpd start
+#npm start
